@@ -10,6 +10,7 @@ const board = [
     [null, null, null],
 ];
 let round = 0;
+const CELL_SIZE = 166;
 
 
 
@@ -17,68 +18,75 @@ canvas.addEventListener("click", function(click) {
     let xClick = click.offsetX;
     let yClick = click.offsetY;
 
-    if (xClick <= 166 && yClick <= 166) {
+    if (xClick <= CELL_SIZE && yClick <= CELL_SIZE) {
         console.log("(1,1)");
         if (board[0][0] == null) {
             board[0][0] = currentPlayer;
-            game.drawMove(166 / 2 , 166 / 2);
+            game.drawMove(CELL_SIZE / 2 , CELL_SIZE / 2);
         }
     }
 
-    if (xClick >= 166 && xClick <= 333 && yClick <= 166) {
+    if (xClick >= CELL_SIZE && xClick <= CELL_SIZE * 2 && yClick <= CELL_SIZE) {
         console.log("(1,2)");
         if (board[0][1] == null) {
             board[0][1] = currentPlayer;
+            game.drawMove(333 - CELL_SIZE / 2, CELL_SIZE / 2);
         }
     }
 
-    if (xClick >= 333 && xClick <= 500 && yClick <= 166) {
+    if (xClick >=  CELL_SIZE * 2 && xClick <= CELL_SIZE * 3 && yClick <= CELL_SIZE) {
         console.log("(1,3)");
         if (board[0][2] == null) {
             board[0][2] = currentPlayer;
-            
+            game.drawMove(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE / 2);
         }
     }
 
-    if (xClick <= 166 && yClick >= 166 && yClick <= 333) {
+    if (xClick <= CELL_SIZE && yClick >= CELL_SIZE && yClick <= CELL_SIZE * 2) {
         console.log("(2,1)");
         if (board[1][0] == null) {
             board[1][0] = currentPlayer;
+            game.drawMove(CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
         }
     }
 
-    if (xClick >= 166 && xClick <= 333 && yClick >= 166 && yClick <= 333) {
+    if (xClick >= CELL_SIZE && xClick <= CELL_SIZE * 2 && yClick >= CELL_SIZE && yClick <= CELL_SIZE * 2) {
         console.log("(2,2)");
         if (board[1][1] == null) {
             board[1][1] = currentPlayer;
+            game.drawMove(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
         }
     }
 
-    if (xClick >= 333 && xClick <= 500 && yClick >= 166 && yClick <= 333) {
+    if (xClick >= CELL_SIZE * 2 && xClick <= CELL_SIZE * 3 && yClick >= CELL_SIZE && yClick <= CELL_SIZE * 2) {
         console.log("(2,3)");
         if (board[1][2] == null) {
             board[1][2] = currentPlayer;
+            game.drawMove(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
         }
     }
 
-    if (xClick <= 166 && yClick >= 333 && yClick <= 500) {
+    if (xClick <= CELL_SIZE && yClick >= CELL_SIZE * 2 && yClick <= CELL_SIZE * 3) {
         console.log("(3,1)");
         if (board[2][0] == null) {
             board[2][0] = currentPlayer;
+            game.drawMove(CELL_SIZE - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
         }
     }
 
-    if (xClick >= 166 && xClick <= 333 && yClick >= 333 && yClick <= 500) {
+    if (xClick >= CELL_SIZE && xClick <= CELL_SIZE * 2 && yClick >= CELL_SIZE * 2 && yClick <= CELL_SIZE * 3) {
         console.log("(3,2)");
         if (board[2][1] == null) {
             board[2][1] = currentPlayer;
+            game.drawMove(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
         }
     }
 
-    if (xClick >= 333 && xClick <= 500 && yClick >= 333 && yClick <= 500) {
+    if (xClick >= CELL_SIZE * 2 && xClick <= CELL_SIZE * 3 && yClick >= CELL_SIZE * 2 && yClick <= CELL_SIZE * 3) {
         console.log("(3,3)");
         if (board[2][2] == null) {
             board[2][2] = currentPlayer;
+            game.drawMove(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
         }
     }
     
@@ -96,36 +104,36 @@ class TicTacToe {
         canvas.width = 500;
         canvas.height = 500;
         c.beginPath();
-        c.moveTo(166,0);
-        c.lineTo(166, 166);
+        c.moveTo(CELL_SIZE,0);
+        c.lineTo(CELL_SIZE, CELL_SIZE);
         c.stroke();
         
-        c.moveTo(333, 0);
-        c.lineTo(333, 166);
+        c.moveTo(CELL_SIZE * 2, 0);
+        c.lineTo(CELL_SIZE * 2, CELL_SIZE);
         c.stroke();
 
-        c.moveTo(0, 166);
-        c.lineTo(500, 166);
+        c.moveTo(0, CELL_SIZE);
+        c.lineTo( CELL_SIZE * 3, CELL_SIZE);
         c.stroke();
 
-        c.moveTo(166, 166);
-        c.lineTo(166, 333);
+        c.moveTo(CELL_SIZE, CELL_SIZE);
+        c.lineTo(CELL_SIZE, CELL_SIZE * 2);
         c.stroke();
         
-        c.moveTo(333, 166);
-        c.lineTo(333, 333);
+        c.moveTo(CELL_SIZE * 2, CELL_SIZE);
+        c.lineTo(CELL_SIZE * 2, CELL_SIZE * 2);
         c.stroke();
 
-        c.moveTo(0, 333);
-        c.lineTo(500, 333);
+        c.moveTo(0, CELL_SIZE * 2);
+        c.lineTo(500, CELL_SIZE * 2);
         c.stroke();
 
-        c.moveTo(166, 333);
-        c.lineTo(166, 500);
+        c.moveTo(CELL_SIZE, CELL_SIZE * 2);
+        c.lineTo(CELL_SIZE,  CELL_SIZE * 3);
         c.stroke();
 
-        c.moveTo(333, 333);
-        c.lineTo(333, 500);
+        c.moveTo(CELL_SIZE * 2, CELL_SIZE * 2);
+        c.lineTo(CELL_SIZE * 2, CELL_SIZE * 3);
         c.stroke();
     }
 
