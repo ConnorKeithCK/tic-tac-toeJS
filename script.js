@@ -10,14 +10,53 @@ const board = [
     [null, null, null],
 ];
 let round = 0;
-var mouse = {
-    x: undefined,
-    y: undefined
-}
 
-window.addEventListener("mousedown", function(mouseMoveEvent) {
-    mouse.x = mouseMoveEvent.x;
-    mouse.y = mouseMoveEvent.y;
+
+
+// 
+
+canvas.addEventListener("click", function(click) {
+    let xClick = click.offsetX;
+    let yClick = click.offsetY;
+
+    if (xClick <= 166 && yClick <= 166) {
+        console.log("(1,1)");
+    }
+
+    if (xClick >= 166 && xClick <= 333 && yClick <= 166) {
+        console.log("(1,2)");
+    }
+
+    if (xClick >= 333 && xClick <= 500 && yClick <= 166) {
+        console.log("(1,3)");
+    }
+
+    if (xClick <= 166 && yClick >= 166 && yClick <= 333) {
+        console.log("(2,1)");
+    }
+
+    if (xClick >= 166 && xClick <= 333 && yClick >= 166 && yClick <= 333) {
+        console.log("(2,2)");
+    }
+
+    if (xClick >= 333 && xClick <= 500 && yClick >= 166 && yClick <= 333) {
+        console.log("(2,3)");
+    }
+
+    if (xClick <= 166 && yClick >= 333 && yClick <= 500) {
+        console.log("(3,1)");
+    }
+
+    if (xClick >= 166 && xClick <= 333 && yClick >= 333 && yClick <= 500) {
+        console.log("(3,2)");
+    }
+
+    if (xClick >= 333 && xClick <= 500 && yClick >= 333 && yClick <= 500) {
+        console.log("(3,3)");
+    }
+    
+    
+
 
 
 })
