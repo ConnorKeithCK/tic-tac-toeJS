@@ -217,9 +217,8 @@ class TicTacToe {
     }
 
     drawX(x, y) {
-        c.beginPath() {
-
-        }
+        c.beginPath()
+        c.moveTo();
     }
 
     drawO(x, y) {
