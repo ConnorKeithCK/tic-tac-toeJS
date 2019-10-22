@@ -11,8 +11,8 @@ const board = [
 ];
 let round = 0;
 const CELL_SIZE = 166;
-
-
+const cell1x = 0;
+const cell1y = 0;
 
 canvas.addEventListener("click", function(click) {
     let xClick = click.offsetX;
@@ -22,7 +22,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(1,1)");
         if (board[0][0] == null) {
             board[0][0] = currentPlayer;
-            game.drawMove(CELL_SIZE / 2 , CELL_SIZE / 2);
+            if (currentPlayer == playerO) {
+                game.drawO(CELL_SIZE / 2 , CELL_SIZE / 2);
+            } else {
+                game.drawX(cell1x, cell1y);
+            } 
         }
     }
 
@@ -30,7 +34,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(1,2)");
         if (board[0][1] == null) {
             board[0][1] = currentPlayer;
-            game.drawMove(333 - CELL_SIZE / 2, CELL_SIZE / 2);
+            if (currentPlayer == playerO) {
+                game.drawO(333 - CELL_SIZE / 2, CELL_SIZE / 2);
+            } else {
+
+            }
         }
     }
 
@@ -38,7 +46,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(1,3)");
         if (board[0][2] == null) {
             board[0][2] = currentPlayer;
-            game.drawMove(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE / 2);
+            if (currentPlayer == playerO) {
+                game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE / 2);
+            } else {
+
+            }
         }
     }
 
@@ -46,7 +58,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(2,1)");
         if (board[1][0] == null) {
             board[1][0] = currentPlayer;
-            game.drawMove(CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+            if (currentPlayer == playerO) {
+                game.drawO(CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+            } else {
+
+            }
         }
     }
 
@@ -54,7 +70,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(2,2)");
         if (board[1][1] == null) {
             board[1][1] = currentPlayer;
-            game.drawMove(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+            if (currentPlayer == playerO) {
+                game.drawO(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+            } else {
+
+            }
         }
     }
 
@@ -62,7 +82,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(2,3)");
         if (board[1][2] == null) {
             board[1][2] = currentPlayer;
-            game.drawMove(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+            if (currentPlayer == playerO) {
+                game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+            } else {
+
+            }
         }
     }
 
@@ -70,7 +94,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(3,1)");
         if (board[2][0] == null) {
             board[2][0] = currentPlayer;
-            game.drawMove(CELL_SIZE - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+            if (currentPlayer == playerO) {
+                game.drawO(CELL_SIZE - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+            } else {
+
+            }
         }
     }
 
@@ -78,7 +106,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(3,2)");
         if (board[2][1] == null) {
             board[2][1] = currentPlayer;
-            game.drawMove(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+            if (currentPlayer  == playerO) {
+                game.drawO(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+            } else {
+
+            }
         }
     }
 
@@ -86,7 +118,11 @@ canvas.addEventListener("click", function(click) {
         console.log("(3,3)");
         if (board[2][2] == null) {
             board[2][2] = currentPlayer;
-            game.drawMove(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+            if (currentPlayer == playerO) {
+                game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+            } else {
+
+            }
         }
     }
     
@@ -95,6 +131,8 @@ canvas.addEventListener("click", function(click) {
     } else {
         currentPlayer = playerX;
     }
+
+    console.log(currentPlayer);
 
 })
 
@@ -145,14 +183,14 @@ class TicTacToe {
 
     }
 
-    drawMove(x, y) {
-        if (currentPlayer == playerX) {
-            // draw X
-        } else {
-            c.beginPath();
+    drawX(x, y) {
+            //  TODO
+    }
+
+    drawO(x, y) {
+        c.beginPath();
             c.arc(x, y, 60, 0, 2 * Math.PI);
             c.stroke();
-        }
     }
 
     clearBoard() {
