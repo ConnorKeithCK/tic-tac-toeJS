@@ -294,7 +294,7 @@ class TicTacToe {
                 gameOver = true;
                 return;
             }
-        } else if ((board[0][2] == playerX) && (board[1][1] === playerX) && (board[2][2] === playerX)) {
+        } else if ((board[0][2] == playerX) && (board[1][1] === playerX) && (board[2][0] === playerX)) {
             if (window.confirm("Player X has won! Press OK to reset the board.")) {
                 game.currentPlayer = playerX;
                 game.clearBoard();
@@ -330,7 +330,7 @@ class TicTacToe {
                 gameOver = true;
                 return;
             }
-        }  else if ((board[0][0] == playerO) && (board[0][1] === playerO) && (board[0][2] === playerO)) {
+        }  else if ((board[0][0] == playerO) && (board[1][0] === playerO) && (board[2][0] === playerO)) {
             if (window.confirm("Player O has won! Press OK to reset the board.")) {
                 game.currentPlayer = playerX;
                 game.clearBoard();
@@ -357,7 +357,7 @@ class TicTacToe {
                 gameOver = true;
                 return;
             }
-        } else  if ((board[0][0] == playerO) && (board[1][1] === playerO) && (board[2][2] === playerO)) {
+        } else  if ((board[2][0] == playerO) && (board[1][1] === playerO) && (board[0][2] === playerO)) {
             if (window.confirm("Player O has won! Press OK to reset the board.")) {
                 game.currentPlayer = playerX;
                 game.clearBoard();
@@ -366,7 +366,7 @@ class TicTacToe {
                 gameOver = true;
                 return;
             }
-        } else if ((board[0][2] == playerO) && (board[1][1] === playerO) && (board[2][2] === playerO)) {
+        } else if ((board[0][0] == playerO) && (board[1][1] === playerO) && (board[2][2] === playerO)) {
             if (window.confirm("Player O has won! Press OK to reset the board.")) {
                 game.currentPlayer = playerX;
                 game.clearBoard();
