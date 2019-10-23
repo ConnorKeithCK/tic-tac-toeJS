@@ -1,10 +1,10 @@
 
 let canvas = document.querySelector("canvas");
 let c = canvas.getContext("2d");
-let currentPlayer = "X";
+let currentPlayer;
 const playerX = "X";
 const playerO = "O";
-const board = [
+let board = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
@@ -20,8 +20,10 @@ canvas.addEventListener("click", function(click) {
             board[0][0] = currentPlayer;
             if (currentPlayer == playerO) {
                 game.drawO(CELL_SIZE / 2 , CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-                game.drawX();
+                game.drawX(CELL_SIZE / 2, CELL_SIZE / 2);
+                game.checkForWin();
             } 
         }
     }
@@ -30,9 +32,11 @@ canvas.addEventListener("click", function(click) {
         if (board[0][1] == null) {
             board[0][1] = currentPlayer;
             if (currentPlayer == playerO) {
-                game.drawO(333 - CELL_SIZE / 2, CELL_SIZE / 2);
+                game.drawO(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-
+                game.drawX(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE / 2);
+                game.checkForWin();
             }
         }
     }
@@ -42,8 +46,10 @@ canvas.addEventListener("click", function(click) {
             board[0][2] = currentPlayer;
             if (currentPlayer == playerO) {
                 game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-
+                game.drawX(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE / 2);
+                game.checkForWin();
             }
         }
     }
@@ -53,8 +59,10 @@ canvas.addEventListener("click", function(click) {
             board[1][0] = currentPlayer;
             if (currentPlayer == playerO) {
                 game.drawO(CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-
+                game.drawX(CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+                game.checkForWin();
             }
         }
     }
@@ -64,8 +72,10 @@ canvas.addEventListener("click", function(click) {
             board[1][1] = currentPlayer;
             if (currentPlayer == playerO) {
                 game.drawO(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-
+                game.drawX(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+                game.checkForWin();
             }
         }
     }
@@ -75,8 +85,10 @@ canvas.addEventListener("click", function(click) {
             board[1][2] = currentPlayer;
             if (currentPlayer == playerO) {
                 game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-
+                game.drawX(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
+                game.checkForWin();
             }
         }
     }
@@ -86,8 +98,10 @@ canvas.addEventListener("click", function(click) {
             board[2][0] = currentPlayer;
             if (currentPlayer == playerO) {
                 game.drawO(CELL_SIZE - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-
+                game.drawX(CELL_SIZE - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+                game.checkForWin();
             }
         }
     }
@@ -97,8 +111,10 @@ canvas.addEventListener("click", function(click) {
             board[2][1] = currentPlayer;
             if (currentPlayer  == playerO) {
                 game.drawO(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-
+                game.drawX(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+                game.checkForWin();
             }
         }
     }
@@ -108,8 +124,10 @@ canvas.addEventListener("click", function(click) {
             board[2][2] = currentPlayer;
             if (currentPlayer == playerO) {
                 game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+                game.checkForWin();
             } else {
-
+                game.drawX(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
+                game.checkForWin();
             }
         }
     }
@@ -124,104 +142,66 @@ canvas.addEventListener("click", function(click) {
 class TicTacToe {
 
     createBoard() {
+        currentPlayer = playerX;
         canvas.width = 500;
         canvas.height = 500;
         c.beginPath();
+        c.strokeStyle = 'gray';
+        c.lineWidth = 10;
+        c.lineJoin = 'round';
+        c.lineCap = 'round';
         // draw lines 
         for (var x = 1; x <= 2; x++) {
-            c.moveTo(x * CELL_SIZE, 0);
-            c.lineTo(x * CELL_SIZE, 500);
+            c.moveTo(x * CELL_SIZE, 5);
+            c.lineTo(x * CELL_SIZE, 495);
             c.stroke();
         }
 
         c.beginPath();
         for (var y = 1; y <= 2; y++) {
-            c.moveTo(0, y * CELL_SIZE);
-            c.lineTo(500, y * CELL_SIZE);
+            c.moveTo(5, y * CELL_SIZE);
+            c.lineTo(495, y * CELL_SIZE);
             c.stroke();
         }
     }
 
     checkForWin() {
-        if (board[0][1] && board[0][2] && board[0][3] == playerX) {
-            // x wins ROW
+
+        if ((board[0][0] == playerX) && (board[0][1] === playerX) && (board[0][2] === playerX)) {
+            if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                currentPlayer = playerX;
+                game = new TicTacToe();
+                game.clearBoard();
+                game.createBoard();
+            } else {
+                return;
+            }
         } 
 
-        if (board[1][1] && board[1][2] && board[1][3] == playerX) {
-            // x wins ROW
-        } 
-
-        if (board[2][1] && board[2][2] && board[2][3] == playerX) {
-            // x wins ROW
-        } 
-
-        if (board[1][0] && board[2][0] && board[3][0] == playerX) {
-            // x wins COLUMN
-        } 
-
-        if (board[1][1] && board[2][1] && board[3][1] == playerX) {
-            // x wins COLUMN
-        }
-
-        if (board[1][2] && board[2][2] && board[3][2] == playerX) {
-            // x wins COLUMN
-        }
-
-        if (board[0][0] && board[1][1] && board[2][2] == playerX) {
-            // x wins DIAGONAL
-        }
-
-        if (board[2][0] && board[1][1] && board [0][2] == playerX) {
-            // x wins DIAGONAL
-        }
-
-    // #### PLAYERO ####
-
-        if (board[0][1] && board[0][2] && board[0][3] == playerO) {
-            // o wins ROW
-        } 
-
-        if (board[1][1] && board[1][2] && board[1][3] == playerO) {
-            // o wins ROW
-        } 
-
-        if (board[2][1] && board[2][2] && board[2][3] == playerO) {
-            // o wins ROW
-        } 
-
-        if (board[1][0] && board[2][0] && board[3][0] == playerO) {
-            // o wins COLUMN
-        } 
-
-        if (board[1][1] && board[2][1] && board[3][1] == playerO) {
-            // o wins COLUMN
-        }
-
-        if (board[1][2] && board[2][2] && board[3][2] == playerO) {
-            // o wins COLUMN
-        }
-
-        if (board[0][0] && board[1][1] && board[2][2] == playerO) {
-            // o wins DIAGONAL
-        }
-
-        if (board[2][0] && board[1][1] && board [0][2] == playerO) {
-            // o wins DIAGONAL
-        }
-
-        
+       
     }
 
     checkForTie() {
 
     }
 
+
     drawX(x, y) {
-        c.beginPath()
-        c.moveTo();
+        c.strokeStyle = 'red';
+        c.beginPath();
+        c.moveTo(x, y);
+        c.lineTo((x - CELL_SIZE / 2 ) + 20, (y - CELL_SIZE / 2) + 20);
+        c.moveTo(x,y);
+        c.lineTo((x - CELL_SIZE / 2 ) + 20, (y + CELL_SIZE / 2) - 20);
+        c.moveTo(x,y);
+        c.lineTo((x  + CELL_SIZE / 2) - 20, (y - CELL_SIZE / 2) + 20);
+        c.moveTo(x, y);
+        c.lineTo((x + CELL_SIZE / 2) - 20, (y + CELL_SIZE / 2) - 20);
+        c.stroke();
     }
 
     drawO(x, y) {
+        c.strokeStyle = 'darkblue';
         c.beginPath();
         c.arc(x, y, 60, 0, 2 * Math.PI);
         c.stroke();
