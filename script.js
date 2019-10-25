@@ -10,6 +10,8 @@ let board = [
     [null, null, null],
 ];
 const CELL_SIZE = 166;
+let roundCount = 0;
+let MAX_ROUNDS = 9;
 
 canvas.addEventListener("click", function(click) {
     let xClick = click.offsetX;
@@ -18,19 +20,17 @@ canvas.addEventListener("click", function(click) {
 if (gameOver == false) {
     if (xClick <= CELL_SIZE && yClick <= CELL_SIZE) {
         if (board[0][0] == null) {
+            roundCount++;
             board[0][0] = game.currentPlayer;
             if (game.currentPlayer == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE / 2 , CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE / 2, CELL_SIZE / 2);
                 game.checkForWin();
             } 
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
-            }
         } else {
             window.alert("That square has already been used! Try again!");
         }
@@ -38,18 +38,16 @@ if (gameOver == false) {
 
     if (xClick >= CELL_SIZE && xClick <= CELL_SIZE * 2 && yClick <= CELL_SIZE) {
         if (board[0][1] == null) {
+            roundCount++;
             board[0][1] = game.currentPlayer;
             if (game.currentPlayer == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE / 2);
                 game.checkForWin();
-            }
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
             }
         } else {
             window.alert("That square has already been used! Try again!");
@@ -58,18 +56,16 @@ if (gameOver == false) {
 
     if (xClick >=  CELL_SIZE * 2 && xClick <= CELL_SIZE * 3 && yClick <= CELL_SIZE) {
         if (board[0][2] == null) {
+            roundCount++;
             board[0][2] = game.currentPlayer;
             if (game.currentPlayer == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE / 2);
                 game.checkForWin();
-            }
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
             }
         } else {
             window.alert("That square has already been used! Try again!");
@@ -78,18 +74,16 @@ if (gameOver == false) {
 
     if (xClick <= CELL_SIZE && yClick >= CELL_SIZE && yClick <= CELL_SIZE * 2) {
         if (board[1][0] == null) {
+            roundCount++;
             board[1][0] = game.currentPlayer;
             if (game.currentPlayer == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
                 game.checkForWin();
-            }
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
             }
         } else {
             window.alert("That square has already been used! Try again!");
@@ -98,18 +92,16 @@ if (gameOver == false) {
 
     if (xClick >= CELL_SIZE && xClick <= CELL_SIZE * 2 && yClick >= CELL_SIZE && yClick <= CELL_SIZE * 2) {
         if (board[1][1] == null) {
+            roundCount++;
             board[1][1] = game.currentPlayer;
             if (game.currentPlayer == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
                 game.checkForWin();
-            }
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
             }
         } else {
             window.alert("That square has already been used! Try again!");
@@ -118,18 +110,16 @@ if (gameOver == false) {
 
     if (xClick >= CELL_SIZE * 2 && xClick <= CELL_SIZE * 3 && yClick >= CELL_SIZE && yClick <= CELL_SIZE * 2) {
         if (board[1][2] == null) {
+            roundCount++;
             board[1][2] = game.currentPlayer;
             if (game.currentPlayer == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 2 - CELL_SIZE / 2);
                 game.checkForWin();
-            }
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
             }
         } else {
             window.alert("That square has already been used! Try again!");
@@ -138,19 +128,18 @@ if (gameOver == false) {
 
     if (xClick <= CELL_SIZE && yClick >= CELL_SIZE * 2 && yClick <= CELL_SIZE * 3) {
         if (board[2][0] == null) {
+            roundCount++;
             board[2][0] = game.currentPlayer;
             if (game.currentPlayer == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
                 game.checkForWin();
             }
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
-            }
+            
         } else {
             window.alert("That square has already been used! Try again!");
         }
@@ -158,18 +147,16 @@ if (gameOver == false) {
 
     if (xClick >= CELL_SIZE && xClick <= CELL_SIZE * 2 && yClick >= CELL_SIZE * 2 && yClick <= CELL_SIZE * 3) {
         if (board[2][1] == null) {
+            roundCount++;
             board[2][1] = game.currentPlayer;
             if (game.currentPlayer  == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE * 2 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
                 game.checkForWin();
-            }
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
             }
         } else {
             window.alert("That square has already been used! Try again!");
@@ -178,19 +165,18 @@ if (gameOver == false) {
 
     if (xClick >= CELL_SIZE * 2 && xClick <= CELL_SIZE * 3 && yClick >= CELL_SIZE * 2 && yClick <= CELL_SIZE * 3) {
         if (board[2][2] == null) {
+            roundCount++;
             board[2][2] = game.currentPlayer;
             if (game.currentPlayer == playerO) {
+                game.currentPlayer = playerX;
                 game.drawO(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
                 game.checkForWin();
             } else {
+                game.currentPlayer = playerO;
                 game.drawX(CELL_SIZE * 3 - CELL_SIZE / 2, CELL_SIZE * 3 - CELL_SIZE / 2);
                 game.checkForWin();
             }
-            if (game.currentPlayer == playerX) {
-                game.currentPlayer = playerO;
-            } else {
-                game.currentPlayer = playerX;
-            }
+
         } else {
             window.alert("That square has already been used! Try again!");
         }
@@ -231,153 +217,181 @@ class TicTacToe {
     }
 
     checkForWin() {
-
-        if ((board[0][0] == playerX) && (board[0][1] === playerX) && (board[0][2] === playerX)) {
-            if (window.confirm("Player X has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
+        if (roundCount < MAX_ROUNDS) {
+            if ((board[0][0] == playerX) && (board[0][1] === playerX) && (board[0][2] === playerX)) {
+                if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else  if((board[1][0] == playerX) && (board[1][1] === playerX) && (board[1][2] === playerX)) {
+                if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else if ((board[2][0] == playerX) && (board[2][1] === playerX) && (board[2][2] === playerX)) {
+                if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return
+                }
+            }  else if ((board[0][0] == playerX) && (board[1][0] === playerX) && (board[2][0] === playerX)) {
+                if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            }  else if ((board[0][1] == playerX) && (board[1][1] === playerX) && (board[2][1] === playerX)) {
+                if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else  if ((board[0][2] == playerX) && (board[1][2] === playerX) && (board[2][2] === playerX)) {
+                if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else  if ((board[0][0] == playerX) && (board[1][1] === playerX) && (board[2][2] === playerX)) {
+                if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else if ((board[0][2] == playerX) && (board[1][1] === playerX) && (board[2][0] === playerX)) {
+                if (window.confirm("Player X has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else if ((board[0][0] == playerO) && (board[0][1] === playerO) && (board[0][2] === playerO)) {
+                if (window.confirm("Player O has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else  if((board[1][0] == playerO) && (board[1][1] === playerO) && (board[1][2] === playerO)) {
+                if (window.confirm("Player O has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else if ((board[2][0] == playerO) && (board[2][1] === playerO) && (board[2][2] === playerO)) {
+                if (window.confirm("Player O has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            }  else if ((board[0][0] == playerO) && (board[1][0] === playerO) && (board[2][0] === playerO)) {
+                if (window.confirm("Player O has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            }  else if ((board[0][1] == playerO) && (board[1][1] === playerO) && (board[2][1] === playerO)) {
+                if (window.confirm("Player O has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else  if ((board[0][2] == playerO) && (board[1][2] === playerO) && (board[2][2] === playerO)) {
+                if (window.confirm("Player O has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else  if ((board[2][0] == playerO) && (board[1][1] === playerO) && (board[0][2] === playerO)) {
+                if (window.confirm("Player O has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
+            } else if ((board[0][0] == playerO) && (board[1][1] === playerO) && (board[2][2] === playerO)) {
+                if (window.confirm("Player O has won! Press OK to reset the board.")) {
+                    game.currentPlayer = playerX;
+                    game.clearBoard();
+                    game.createBoard();
+                    roundCount = 0;
+                } else {
+                    gameOver = true;
+                    return;
+                }
             }
-        } else  if((board[1][0] == playerX) && (board[1][1] === playerX) && (board[1][2] === playerX)) {
-            if (window.confirm("Player X has won! Press OK to reset the board.")) {
+        } else {
+            if (window.confirm("Tie! Press OK to clear the board.")) {
                 game.currentPlayer = playerX;
+                console.log(game.currentPlayer);
                 game.clearBoard();
                 game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else if ((board[2][0] == playerX) && (board[2][1] === playerX) && (board[2][2] === playerX)) {
-            if (window.confirm("Player X has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return
-            }
-        }  else if ((board[0][0] == playerX) && (board[1][0] === playerX) && (board[2][0] === playerX)) {
-            if (window.confirm("Player X has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        }  else if ((board[0][1] == playerX) && (board[1][1] === playerX) && (board[2][1] === playerX)) {
-            if (window.confirm("Player X has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else  if ((board[0][2] == playerX) && (board[1][2] === playerX) && (board[2][2] === playerX)) {
-            if (window.confirm("Player X has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else  if ((board[0][0] == playerX) && (board[1][1] === playerX) && (board[2][2] === playerX)) {
-            if (window.confirm("Player X has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else if ((board[0][2] == playerX) && (board[1][1] === playerX) && (board[2][0] === playerX)) {
-            if (window.confirm("Player X has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else if ((board[0][0] == playerO) && (board[0][1] === playerO) && (board[0][2] === playerO)) {
-            if (window.confirm("Player O has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else  if((board[1][0] == playerO) && (board[1][1] === playerO) && (board[1][2] === playerO)) {
-            if (window.confirm("Player O has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else if ((board[2][0] == playerO) && (board[2][1] === playerO) && (board[2][2] === playerO)) {
-            if (window.confirm("Player O has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        }  else if ((board[0][0] == playerO) && (board[1][0] === playerO) && (board[2][0] === playerO)) {
-            if (window.confirm("Player O has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        }  else if ((board[0][1] == playerO) && (board[1][1] === playerO) && (board[2][1] === playerO)) {
-            if (window.confirm("Player O has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else  if ((board[0][2] == playerO) && (board[1][2] === playerO) && (board[2][2] === playerO)) {
-            if (window.confirm("Player O has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else  if ((board[2][0] == playerO) && (board[1][1] === playerO) && (board[0][2] === playerO)) {
-            if (window.confirm("Player O has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
-            } else {
-                gameOver = true;
-                return;
-            }
-        } else if ((board[0][0] == playerO) && (board[1][1] === playerO) && (board[2][2] === playerO)) {
-            if (window.confirm("Player O has won! Press OK to reset the board.")) {
-                game.currentPlayer = playerX;
-                game.clearBoard();
-                game.createBoard();
+                roundCount = 0;
             } else {
                 gameOver = true;
                 return;
             }
         }
-       
+     
     }
 
     drawX(x, y) {
