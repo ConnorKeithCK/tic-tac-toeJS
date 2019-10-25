@@ -195,6 +195,7 @@ if (gameOver == false) {
             window.alert("That square has already been used! Try again!");
         }
     }
+
     
 }
     
